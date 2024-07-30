@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Editor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <h1>Math Editor</h1>
+    <p>Type your LaTeX equations below:</p>
+    <textarea id="math-input" rows="10" cols="50"></textarea>
+    <h2>Rendered Output</h2>
+    <div id="math-output"></div>
+    
+    <script>
+        document.getElementById('math-input').addEventListener('input', function () {
+            var math = document.getElementById('math-input').value;
+            document.getElementById('math-output').innerHTML = MathJax.tex2chtml(math).outerHTML;
+        });
+    </script>
+</body>
+</html>
